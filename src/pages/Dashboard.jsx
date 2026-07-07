@@ -1,0 +1,75 @@
+import { Link } from 'react-router-dom'
+import { Flame, CheckCircle2, HelpCircle, Layers, ClipboardCheck, ArrowRight } from 'lucide-react'
+import './Dashboard.css'
+
+const stats = [
+  { label: 'Topics Mastered', value: 0, icon: CheckCircle2, suffix: '/ 21' },
+  { label: 'Day Streak', value: 0, icon: Flame, suffix: 'days' },
+  { label: 'Questions Answered', value: 0, icon: HelpCircle, suffix: 'total' },
+]
+
+const topicGroups = [
+  { category: 'Core Web & JS', topics: ['HTML Semantics', 'CSS Specificity', 'Flexbox', 'CSS Grid', 'Responsive Design', 'DOM', 'Virtual DOM', 'Event Loop', 'Closures', 'Hoisting', 'Promises', 'Async/Await', 'Event Bubbling & Capturing'] },
+  { category: 'React', topics: ['React Lifecycle', 'React Hooks', 'State vs Props', 'Context API', 'Memoization'] },
+  { category: 'Performance & Architecture', topics: ['Debouncing vs Throttling', 'SSR vs CSR vs SSG', 'Hydration', 'Code Splitting', 'Lazy Loading', 'Web Performance'] },
+  { category: 'Security & A11y', topics: ['Authentication Basics', 'XSS / CSRF / CORS', 'Accessibility'] },
+  { category: 'Day-to-Day & Behavioral', topics: ['Git Workflows', 'Testing Awareness', 'STAR Method Prep'] },
+]
+
+export default function Dashboard() {
+  return (
+    <div>
+      <div className="dashboard-header">
+        <h1>Dashboard</h1>
+        <p className="subtitle">Interview prep tracker for my PipeOps frontend internship interview</p>
+      </div>
+
+      <div className="disclaimer">
+        <strong>Personal practice tool.</strong> PrepDeck is a self-built study aid for my own interview preparation and is not affiliated with, endorsed by, or connected to PipeOps in any way.
+      </div>
+
+      <div className="stats-grid">
+        {stats.map(({ label, value, icon: Icon, suffix }) => (
+          <div className="stat-card" key={label}>
+            <div className="stat-icon"><Icon size={20} /></div>
+            <div className="stat-value">{value} <span>{suffix}</span></div>
+            <div className="stat-label">{label}</div>
+          </div>
+        ))}
+      </div>
+
+      <div className="quick-actions">
+        <Link to="/flashcards" className="action-card flashcards">
+          <div className="action-icon"><Layers size={22} /></div>
+          <div>
+            <div className="action-title">Review Flashcards</div>
+            <div className="action-desc">Flip through topics with spaced repetition</div>
+          </div>
+          <ArrowRight size={18} className="action-arrow" />
+        </Link>
+        <Link to="/quiz" className="action-card quiz">
+          <div className="action-icon"><ClipboardCheck size={22} /></div>
+          <div>
+            <div className="action-title">Start Mock Interview</div>
+            <div className="action-desc">Timed quiz mode, simulate the real thing</div>
+          </div>
+          <ArrowRight size={18} className="action-arrow" />
+        </Link>
+      </div>
+
+      <div className="topics-section">
+        <h2>Topics Covered</h2>
+        <div className="topics-grid">
+          {topicGroups.map(({ category, topics }) => (
+            <div className="topic-group" key={category}>
+              <div className="topic-group-header">{category}</div>
+              <div className="topic-chips">
+                {topics.map(t => <span className="topic-chip" key={t}>{t}</span>)}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
