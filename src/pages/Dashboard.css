@@ -219,6 +219,11 @@
     text-decoration: none;
 }
 
+.slopdar-badge {
+    display: block;
+    margin-top: 24px;
+}
+
 /* Tone variants */
 .encouragement.celebrate {
     border-color: rgba(168, 85, 247, 0.18);
