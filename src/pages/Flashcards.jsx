@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Shuffle, RotateCcw, Bookmark } from 'lucide-react';
 import { flashcards } from '../data/flashcards';
-import { useFlashcards } from '../hooks/useFlashcards';
+import { useFlashcards } from '../hooks/useFlashCards';
 import { useBookmarks } from '../hooks/useBookmarks';
 import FlipCard from '../components/FlipCard';
 import './Flashcards.css';

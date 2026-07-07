@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useMemo } from 'react'
 import { Flame, CheckCircle2, HelpCircle, Layers, ClipboardCheck, ArrowRight } from 'lucide-react'
-import { useFlashcards } from '../hooks/useFlashcards'
+import { useFlashcards } from '../hooks/useFlashCards'
 import { useQuizHistory } from '../hooks/useQuizHistory'
 import { getStreak } from '../utils/progressStats'
 import './Dashboard.css'

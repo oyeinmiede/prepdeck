@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import { Bookmark, ArrowRight } from 'lucide-react';
 import { flashcards } from '../data/flashcards';
 import { useBookmarks } from '../hooks/useBookmarks';
-import { useFlashcards } from '../hooks/useFlashcards';
+import { useFlashcards } from '../hooks/useFlashCards';
 import FlipCard from '../components/FlipCard';
 import './Bookmarks.css';
 
