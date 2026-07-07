@@ -1,0 +1,30 @@
+.topbar {
+    display: flex;
+    align-items: center;
+    height: 56px;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-elevated);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.topbar-spacer {
+    flex: 1;
+}
+
+.theme-toggle {
+    color: var(--text-muted);
+}
+
+.theme-toggle:hover {
+    color: var(--accent);
+    background: var(--accent-soft);
+}
+
+@media (min-width: 769px) {
+    .mobile-only {
+        display: none;
+    }
+}
