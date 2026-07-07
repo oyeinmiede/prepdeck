@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom'
+import { useMemo } from 'react'
 import { Flame, CheckCircle2, HelpCircle, Layers, ClipboardCheck, ArrowRight } from 'lucide-react'
+import { useFlashcards } from '../hooks/useFlashcards'
+import { useQuizHistory } from '../hooks/useQuizHistory'
+import { getStreak } from '../utils/progressStats'
 import './Dashboard.css'
-
-const stats = [
-  { label: 'Topics Mastered', value: 0, icon: CheckCircle2, suffix: '/ 21' },
-  { label: 'Day Streak', value: 0, icon: Flame, suffix: 'days' },
-  { label: 'Questions Answered', value: 0, icon: HelpCircle, suffix: 'total' },
-]
 
 const topicGroups = [
   { category: 'Core Web & JS', topics: ['HTML Semantics', 'CSS Specificity', 'Flexbox', 'CSS Grid', 'Responsive Design', 'DOM', 'Virtual DOM', 'Event Loop', 'Closures', 'Hoisting', 'Promises', 'Async/Await', 'Event Bubbling & Capturing'] },
@@ -17,6 +15,16 @@ const topicGroups = [
 ]
 
 export default function Dashboard() {
+  const { stats: cardStats } = useFlashcards()
+  const { history, stats: quizStats } = useQuizHistory()
+  const streak = useMemo(() => getStreak(history), [history])
+
+  const stats = [
+    { label: 'Cards Mastered', value: cardStats.mastered, icon: CheckCircle2, suffix: `/ ${cardStats.totalCards}` },
+    { label: 'Day Streak', value: streak, icon: Flame, suffix: streak === 1 ? 'day' : 'days' },
+    { label: 'Questions Answered', value: cardStats.questionsAnswered + quizStats.questionsAnswered, icon: HelpCircle, suffix: 'total' },
+  ]
+
   return (
     <div>
       <div className="dashboard-header">
