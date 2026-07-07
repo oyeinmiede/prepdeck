@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Geist+Mono:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
     --bg: #f7f8fa;
     --bg-elevated: #ffffff;
@@ -32,10 +34,34 @@
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--bg);
     color: var(--text);
     transition: background 0.2s, color 0.2s;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+body,
+p,
+span,
+div {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+}
+
+code,
+pre,
+.sidebar,
+.dashboard-metric {
+    font-family: 'Geist Mono', monospace;
 }
 
 button {
