@@ -16,7 +16,7 @@ export default function Sidebar({ collapsed, onToggleCollapse, mobileOpen, onClo
             {mobileOpen && <div className="sidebar-overlay" onClick={onCloseMobile} />}
             <aside className={`sidebar ${collapsed ? 'collapsed' : ''} ${mobileOpen ? 'mobile-open' : ''}`}>
                 <div className="sidebar-header">
-                    {!collapsed && <span className="sidebar-logo">PrepDeck</span>}
+                    {!collapsed && <span className="sidebar-logo"><img src="/logo-full.png" alt="PrepDeck" /></span>}
                     <button className="icon-btn mobile-only" onClick={onCloseMobile}><X size={18} /></button>
                     <button className="icon-btn desktop-only" onClick={onToggleCollapse}><ChevronsLeft size={18} className={collapsed ? 'flipped' : ''} /></button>
                 </div>
