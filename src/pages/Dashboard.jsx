@@ -25,11 +25,34 @@ export default function Dashboard() {
     { label: 'Questions Answered', value: cardStats.questionsAnswered + quizStats.questionsAnswered, icon: HelpCircle, suffix: 'total' },
   ]
 
+  const masteredRatio = cardStats.totalCards ? cardStats.mastered / cardStats.totalCards : 0
+  let encouragement = { tone: 'neutral', title: 'Keep going', text: 'Small steps add up — you’re doing great.' }
+
+  if (streak >= 7 && masteredRatio > 0.6) {
+    encouragement = { tone: 'celebrate', title: 'Amazing streak', text: `🔥 ${streak} days in a row — you’re on fire, Gabrielle!` }
+  } else if (streak >= 3) {
+    encouragement = { tone: 'motivating', title: 'Nice streak', text: `Great work — ${streak} days straight. Keep the momentum.` }
+  } else if (masteredRatio > 0.5) {
+    encouragement = { tone: 'proud', title: 'Halfway there', text: `You’ve mastered ${Math.round(masteredRatio * 100)}% of topics. Solid progress.` }
+  } else if (cardStats.questionsAnswered + quizStats.questionsAnswered === 0) {
+    encouragement = { tone: 'welcome', title: 'Welcome', text: 'Start with one card today — consistency beats intensity.' }
+  }
+
   return (
     <div>
       <div className="dashboard-header">
         <h1>Dashboard</h1>
         <p className="subtitle">Interview prep tracker for my PipeOps frontend internship interview</p>
+      </div>
+
+      <div className={`encouragement ${encouragement.tone}`}>
+        <div className="encouragement-left">
+          <div className="encouragement-title">{encouragement.title}</div>
+          <div className="encouragement-text">{encouragement.text}</div>
+        </div>
+        <div className="encouragement-cta">
+          <Link to="/flashcards" className="btn-primary">Review a card</Link>
+        </div>
       </div>
 
       <div className="disclaimer">
